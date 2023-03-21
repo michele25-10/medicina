@@ -1,3 +1,11 @@
+<?php
+session_start();
+
+include_once dirname(__FILE__) . '\api.php';
+
+$email = info($_SESSION['user_id']);
+?>
+
 <!doctype html>
 <html lang="en">
 
@@ -13,9 +21,10 @@
 
     <?php require_once(__DIR__ . '\header.php'); ?>
 
-
-    <div class="container" id="content">
-
+    <div class="container mt-5" id="content">
+        <h2>Benvenuto
+            <?php echo $email ?>
+        </h2>
     </div>
 
     <?php require_once(__DIR__ . '\footer.php'); ?>

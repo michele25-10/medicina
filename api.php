@@ -1,7 +1,8 @@
 <?php
+require_once('./connect.php');
+
 function login($email, $password)
 {
-    require_once('./connect.php');
     //echo $_SESSION['user_id']; 
     if (isset($email) || isset($password)) {
         echo ($email . $password);
@@ -19,6 +20,24 @@ function login($email, $password)
             } else {
                 return -1;
             }
+        }
+
+    }
+}
+
+function info($id_user)
+{
+    if (isset($id_user)) {
+        $db = new Database();
+        $db_conn = $db->connect();
+
+        $sql = "SELECT email 
+                FROM utente
+                WHERE id='" . $id_user . "';";
+
+        $result = $db_conn->query($sql);
+        while ($row = $result->fetch_assoc()) {
+            return $row['email'];
         }
 
     }
