@@ -1,5 +1,8 @@
 <?php
 
+include_once dirname(__FILE__) . '\api.php';
+
+$check = checkAdmin($_SESSION['user_id']);
 
 ?>
 <nav class="navbar navbar-expand-lg bg-dark" data-bs-theme="dark">
@@ -21,7 +24,9 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Visualizza unità didattica</a></li>
-                        <li><a class="dropdown-item" href="#">Aggiungi unità didattica</a></li>
+                        <?php if ($check == true): ?>
+                            <li><a class="dropdown-item" href="#">Aggiungi unità didattica</a></li>
+                        <?php endif ?>
                     </ul>
                 </li>
                 <li class="nav-item dropdown">
@@ -31,7 +36,10 @@
                     </a>
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="#">Visualizza piano di studi</a></li>
-                        <li><a class="dropdown-item" href="#">Aggiungi piano di studi</a></li>
+                        <?php if ($check == true): ?>
+                            <li><a class="dropdown-item" href="#">Aggiungi piano di studi</a></li>
+                        <?php endif ?>
+
                     </ul>
                 </li>
             </ul>

@@ -43,4 +43,26 @@ function info($id_user)
     }
 }
 
+function checkAdmin($id_user)
+{
+    if (isset($id_user)) {
+        $db = new Database();
+        $db_conn = $db->connect();
+
+        $sql = "SELECT u.id 
+                FROM utente u
+                INNER JOIN ruolo r ON r.id = u.ruolo
+                WHERE u.id='" . $id_user . "';";
+
+        $result = $db_conn->query($sql);
+        while ($row = $result->fetch_assoc()) {
+            if ($row['id'] == $id_user) {
+                return true;
+            } else {
+                return false;
+            }
+        }
+    }
+}
+
 ?>
