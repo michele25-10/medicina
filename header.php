@@ -20,12 +20,12 @@ $check = checkAdmin($_SESSION['user_id']);
                 <li class="nav-item dropdown">
                     <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                         aria-expanded="false">
-                        Didattica formativa
+                        Utenti
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="getUnitàDidattica.php">Visualizza unità didattica</a></li>
+                        <li><a class="dropdown-item" href="getUser.php">Visualizza utenti</a></li>
                         <?php if ($check == true): ?>
-                            <li><a class="dropdown-item" href="#">Aggiungi unità didattica</a></li>
+                            <li><a class="dropdown-item" href="#">Aggiungi utente</a></li>
                         <?php endif ?>
                     </ul>
                 </li>
@@ -35,7 +35,7 @@ $check = checkAdmin($_SESSION['user_id']);
                         Piano di studi
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Visualizza piano di studi</a></li>
+                        <li><a class="dropdown-item" href="getUnitàDidattica.php">Visualizza piano di studi</a></li>
                         <?php if ($check == true): ?>
                             <li><a class="dropdown-item" href="#">Aggiungi piano di studi</a></li>
                         <?php endif ?>

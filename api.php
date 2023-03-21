@@ -102,4 +102,31 @@ function getUnitàDidattica()
     }
 }
 
+function getUser()
+{
+    $db = new Database();
+    $db_conn = $db->connect();
+
+    $sql = "SELECT u.id, u.email, r.descr
+            FROM utente u
+            INNER JOIN ruolo r ON r.id = u.ruolo
+            WHERE 1=1;";
+
+    $result = $db_conn->query($sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        $users_arr = array();
+        while ($row = $result->fetch_assoc()) {
+            extract($row);
+            $user_arr = array(
+                'id' => $id,
+                'email' => $email,
+                'descr' => $descr,
+            );
+            array_push($users_arr, $user_arr);
+        }
+        return $users_arr;
+    }
+}
+
 ?>
