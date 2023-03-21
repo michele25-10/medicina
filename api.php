@@ -65,4 +65,41 @@ function checkAdmin($id_user)
     }
 }
 
+function getUnitàDidattica()
+{
+    $db = new Database();
+    $db_conn = $db->connect();
+
+    $sql = "SELECT * 
+            FROM piano_di_studi
+            WHERE 1=1;";
+
+    $result = $db_conn->query($sql);
+
+    if (mysqli_num_rows($result) > 0) {
+        $pianos_arr = array();
+        while ($row = $result->fetch_assoc()) {
+            extract($row);
+            $piano_arr = array(
+                'codice' => $codice,
+                'nome' => $nome,
+                'CFU' => $CFU,
+                'settore' => $settore,
+                'n_settore' => $n_settore,
+                'TAF_Ambito' => $TAF_Ambito,
+                'ore_lezione' => $ore_lezione,
+                'ore_laboratorio' => $ore_laboratorio,
+                'ore_tirocinio' => $ore_tirocinio,
+                'tipo_insegnamento' => $tipo_insegnamento,
+                'semestre' => $semestre,
+                'descrizione_semestre' => $descrizione_semestre,
+                'anno1' => $anno1,
+                'anno2' => $anno2,
+            );
+            array_push($pianos_arr, $piano_arr);
+        }
+        return $pianos_arr;
+    }
+}
+
 ?>

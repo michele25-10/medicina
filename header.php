@@ -23,7 +23,7 @@ $check = checkAdmin($_SESSION['user_id']);
                         Didattica formativa
                     </a>
                     <ul class="dropdown-menu">
-                        <li><a class="dropdown-item" href="#">Visualizza unità didattica</a></li>
+                        <li><a class="dropdown-item" href="getUnitàDidattica.php">Visualizza unità didattica</a></li>
                         <?php if ($check == true): ?>
                             <li><a class="dropdown-item" href="#">Aggiungi unità didattica</a></li>
                         <?php endif ?>
