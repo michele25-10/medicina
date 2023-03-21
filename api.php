@@ -129,4 +129,21 @@ function getUser()
     }
 }
 
+function addUser($email, $password, $ruolo)
+{
+    $db = new Database();
+    $db_conn = $db->connect();
+
+    $sql = "INSERT INTO utente(email, passwd, ruolo)
+    VALUES ('" . $email . "', '" . $password . "', '" . $ruolo . "');";
+
+    $result = $db_conn->query($sql);
+
+    if ($result != false) {
+        return true;
+    } else {
+        return false;
+    }
+}
+
 ?>

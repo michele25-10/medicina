@@ -25,7 +25,7 @@ $check = checkAdmin($_SESSION['user_id']);
                     <ul class="dropdown-menu">
                         <li><a class="dropdown-item" href="getUser.php">Visualizza utenti</a></li>
                         <?php if ($check == true): ?>
-                            <li><a class="dropdown-item" href="#">Aggiungi utente</a></li>
+                            <li><a class="dropdown-item" href="addUser.php">Aggiungi utente</a></li>
                         <?php endif ?>
                     </ul>
                 </li>
