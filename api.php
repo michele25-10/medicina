@@ -70,9 +70,10 @@ function getUnitàDidattica()
     $db = new Database();
     $db_conn = $db->connect();
 
-    $sql = "SELECT * 
-            FROM piano_di_studi
-            WHERE 1=1;";
+    $sql = "SELECT DISTINCT pds.codice, pds.nome, pds.CFU, IF(pds.ore_lezione IS NOT NULL, pds.ore_lezione, 0) AS lezione, IF(pds.ore_laboratorio IS NOT NULL, pds.ore_laboratorio, 0) AS laboratorio, IF(pds.ore_tirocinio IS NOT NULL, pds.ore_tirocinio, 0) AS tirocinio
+    FROM piano_di_studi pds
+    WHERE pds.codice NOT IN (SELECT fd.didattica
+                        FROM formativa_didattica fd);";
 
     $result = $db_conn->query($sql);
 
@@ -84,17 +85,9 @@ function getUnitàDidattica()
                 'codice' => $codice,
                 'nome' => $nome,
                 'CFU' => $CFU,
-                'settore' => $settore,
-                'n_settore' => $n_settore,
-                'TAF_Ambito' => $TAF_Ambito,
-                'ore_lezione' => $ore_lezione,
-                'ore_laboratorio' => $ore_laboratorio,
-                'ore_tirocinio' => $ore_tirocinio,
-                'tipo_insegnamento' => $tipo_insegnamento,
-                'semestre' => $semestre,
-                'descrizione_semestre' => $descrizione_semestre,
-                'anno1' => $anno1,
-                'anno2' => $anno2,
+                'ore_lezione' => $lezione,
+                'ore_laboratorio' => $laboratorio,
+                'ore_tirocinio' => $tirocinio,
             );
             array_push($pianos_arr, $piano_arr);
         }
@@ -121,7 +114,7 @@ function getUser()
             $user_arr = array(
                 'id' => $id,
                 'email' => $email,
-                'descr' => $descr,
+                'ruolo' => $descr,
             );
             array_push($users_arr, $user_arr);
         }

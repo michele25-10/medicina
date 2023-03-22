@@ -26,18 +26,18 @@ $array = getUnitàDidattica();
         <h2>Unità didattiche:</h2>
     </div>
 
-    <div class="" style="max-height:100%; overflow:scroll;">
+    <div class="container mb-5" style="max-height:100%; overflow:scroll;">
         <table class="table" style="margin-left: auto;
   margin-right: auto; text-align:center;">
             <thead>
                 <tr>
-                    <th scope="col">Codice Attività</th>
-                    <th scope="col">Nome Attività</th>
-                    <th scope="col">Codice Unità</th>
-                    <th scope="col">Nome Unità</th>
+                    <th scope="col">Codice</th>
+                    <th scope="col">Nome</th>
                     <th scope="col">CFU</th>
-                    <th scope="col">Settore</th>
-                    <th scope="col">Elimina</th>
+                    <th scope="col">Ore lezione</th>
+                    <th scope="col">Ore laboratorio</th>
+                    <th scope="col">Ore tirocinio</th>
+                    <th scope="col"></th>
                 </tr>
             </thead>
             <tbody>
@@ -50,14 +50,21 @@ $array = getUnitàDidattica();
                             <?php echo $row['nome'] ?>
                         </td>
                         <td>
-                            <?php echo $row['TAF_Ambito'] ?>
+                            <?php echo $row['CFU'] ?>
+                        </td>
+                        <td>
+                            <?php echo $row['ore_lezione'] ?>
+                        </td>
+                        <td>
+                            <?php echo $row['ore_laboratorio'] ?>
+                        </td>
+                        <td>
+                            <?php echo $row['ore_tirocinio'] ?>
                         </td>
                     </tr>
                 <?php endforeach ?>
             </tbody>
         </table>
-
-        <?php require_once(__DIR__ . '\footer.php'); ?>
 
         <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0-alpha1/dist/js/bootstrap.bundle.min.js"
             integrity="sha384-w76AqPfDkMBDXo30jS1Sgez6pr3x5MlQ1ZAGC+nuZB+EYdgRZgiwxhTBTkF7CXvN"
